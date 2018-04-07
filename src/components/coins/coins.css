@@ -1,0 +1,71 @@
+.coinContainer{
+  background-image: url("../../images/bg-card2.png");
+  background-size: cover;
+  background-color: #f4f4f4;
+  padding: 10px 20px;
+  flex-basis: calc(30% - 25px);
+  margin: 10px;
+  border-radius: 10px;
+  font-family: 'Days One', sans-serif;
+}
+.coinWrap1{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.coin-symbol{
+  color: #ff8100;
+  font-weight: bold;
+}
+.coin-title{
+ color: #3c3c3c;
+}
+.coinWrap2{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.coin-price{
+  font-size: 35px;
+}
+.coin-percent{
+  color: green;
+}
+.coin-percent-negative{
+  color: red;
+}
+.coinWrap3 h6{
+  color: grey;
+}
+.coinWrap3 p{
+  font-size: 20px
+}
+
+
+
+
+@media only screen and (max-width: 1200px) {
+  .coinContainer{
+    flex-basis: calc(50% - 60px);
+    margin: 10px;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .coinContainer{
+    flex-basis: 100%;
+    margin: 10px;
+  }
+  .coin-title{
+  font-size: 21px;
+  }
+  .coinWrap2{
+    justify-content: space-between;
+  }
+  .coin-price{
+    font-size: 20px;
+  }
+  .coinWrap3 p{
+    font-size: 13px
+  }
+}
