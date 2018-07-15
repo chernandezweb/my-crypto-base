@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './coins.css';
 
 class Coins extends Component {
+
+  currencyFormat = (num) => {
+    return "$" + Number(num).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+  }
   render() {
     let title = this.props.coin.name;
     let price = this.props.coin.price_usd;
@@ -17,6 +21,7 @@ class Coins extends Component {
     if(percent < 0){
       classPercent = "coin-percent-negative";
     }
+    console.log(Number(price).toFixed(2));
 
     return (
       <div className="coinContainer">
@@ -36,7 +41,7 @@ class Coins extends Component {
         <hr/>
       <div className="coinWrap2">
           <p className="coin-price">
-            ${price}
+            {this.currencyFormat(Number(price).toFixed(2))}
           </p>
           <p className={classPercent}>
             {percent}%
@@ -45,21 +50,21 @@ class Coins extends Component {
 
         <div className="coinWrap3">
           <p className="coin-marketcap">
-            ${marketcap}
+            {this.currencyFormat(marketcap)}
           </p>
           <h6>MARKET CAP</h6>
         </div>
 
         <div className="coinWrap3">
           <p className="coin-volume">
-            ${volume}
+            {this.currencyFormat(volume)}
           </p>
           <h6>VOLUME</h6>
         </div>
 
         <div className="coinWrap3">
           <p className="coin-circusupply">
-            ${supply}
+            {this.currencyFormat(supply)}
           </p>
           <h6>CIRCULATING SUPPLY</h6>
         </div>
