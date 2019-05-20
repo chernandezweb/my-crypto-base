@@ -16,7 +16,6 @@ class App extends Component {
     };
   }
   handleSearch = (event) =>{
-    console.log(event);
     this.setState({
       search: event.value,
       coins: this.state.allCoins.filter((coin) => new RegExp(event.target.value, "i").exec(coin.name))
@@ -40,7 +39,6 @@ class App extends Component {
     fetch(url, obj)
     .then(response => response.json())
     .then((data) =>{
-        console.log(data);
       this.setState({
         coins: data.data,
         allCoins: data.data

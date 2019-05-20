@@ -25,7 +25,6 @@ class Coins extends Component {
     if(percent < 0){
       classPercent = "coin-percent-negative";
     }
-    console.log(Number(price).toFixed(2));
 
     return (
       <div className="coinContainer">
