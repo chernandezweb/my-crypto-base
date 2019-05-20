@@ -5,18 +5,22 @@ class Coins extends Component {
 
   currencyFormat = (num) => {
     return "$" + Number(num).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-  }
+  };
+
+  supplyFormat = (num) => {
+      return this.props.coin.symbol + " " + Number(num).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+  };
   render() {
     let title = this.props.coin.name;
-    let price = this.props.coin.price_usd;
+    let price = this.props.coin.quote.USD.price;
     let symbol = this.props.coin.symbol;
-    let percent = this.props.coin.percent_change_24h;
-    let marketcap = this.props.coin.market_cap_usd;
-    let volume = this.props.coin['24h_volume_usd'];
-    let supply = this.props.coin.available_supply;
-    let rank = this.props.coin.rank;
+    let percent = this.props.coin.quote.USD.percent_change_24h;
+    let marketcap = this.props.coin.quote.USD.market_cap;
+    let volume = this.props.coin.quote.USD.volume_24h;
+    let supply = this.props.coin.total_supply;
+    let rank = this.props.coin.cmc_rank;
 
-    let classPercent = "coin-percent"
+    let classPercent = "coin-percent";
 
     if(percent < 0){
       classPercent = "coin-percent-negative";
@@ -64,7 +68,7 @@ class Coins extends Component {
 
         <div className="coinWrap3">
           <p className="coin-circusupply">
-            {this.currencyFormat(supply)}
+            {this.supplyFormat(supply)}
           </p>
           <h6>CIRCULATING SUPPLY</h6>
         </div>

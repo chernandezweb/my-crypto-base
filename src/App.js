@@ -16,21 +16,34 @@ class App extends Component {
     };
   }
   handleSearch = (event) =>{
-    console.log(event)
+    console.log(event);
     this.setState({
       search: event.value,
       coins: this.state.allCoins.filter((coin) => new RegExp(event.target.value, "i").exec(coin.name))
     });
-  }
+  };
 
   componentDidMount(){
-    const url = "https://api.coinmarketcap.com/v1/ticker/?limit=102";
-    fetch(url)
+    // const url = "https://api.coinmarketcap.com/v1/ticker/?limit=102";
+    const url = "https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
+
+    const obj = {
+        method: 'GET',
+        headers: {
+            "Accept": "application/json",
+            'X-CMC_PRO_API_KEY': '974c8426-c524-42f0-b01c-56d44111c967'
+        },
+        json: true,
+        gzip: true
+
+    };
+    fetch(url, obj)
     .then(response => response.json())
     .then((data) =>{
+        console.log(data);
       this.setState({
-        coins: data,
-        allCoins: data
+        coins: data.data,
+        allCoins: data.data
       });
     });
   }
